@@ -11,6 +11,7 @@
     "build": "vite build",
     "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://akash-raushan.github.io/weather-app",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }
