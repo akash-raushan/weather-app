@@ -3,3 +3,4 @@ node_modules
 Screenshot 2024-08-07 032414.png
 # vite.config.js
 .env
+dist

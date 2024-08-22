@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-
-
-  <script type="module" crossorigin src="assets/index-DyfDAN3v.js"></script>
-  <link rel="stylesheet" crossorigin href="assets/index-CX7K208c.css">
+    <title>Weather App</title>
+  <script type="module" crossorigin src="/assets/index-BKxyNH23.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BLcB4epy.css">
 </head>
 
-<body class="bg-gradient-to-t from-[#3C7290] via-[#475B61] to-[#2B373D] h-[100vh] w-[100%] overflow-hidden text-white">
+<body
+    class="bg-gradient-to-t from-[#3C7290] via-[#475B61] to-[#2B373D] h-[100vh] w-[100%] overflow-hidden text-white cursor-default">
     <!-- <h1 class="text-red-900 text-6xl font-[elephant]">Hello world</h1> -->
     <!-- <div class="box  "> -->
     <div class="nav flex justify-between mt-6">
@@ -19,15 +18,18 @@
             <li class="list-none"><img src="asset/settings.png" alt="" class="img size-6 mx-6 cursor-pointer"></li>
             <!-- <li class="list-none text-white location text-xl lg:text-4xl font-semibold inputLocation" contenteditable
                 onblur="getWeather(this.innerText)">Arwal</li> -->
-            <li class="list-none text-white location text-xl lg:text-4xl font-semibold inputLocation">Arwal</li>
+            <li class="list-none text-white location text-xl lg:text-4xl font-semibold inputLocation text-center items-center">Arwal
+            </li>
             <!-- <button id="updateWeatherButton" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Update Weather</button> -->
 
-            <li class="list-none"><img src="asset/change.png" alt="" class="img size-6 mx-6 cursor-pointer" id="changeLocation"></li>
+            <li class="list-none"><img src="asset/change.png" alt="" class="img size-6 mx-6 cursor-pointer"
+                    id="changeLocation"></li>
         </ul>
     </div>
 
-    <div class="timeDate flex justify-center my-3">
-        <span class="date lg:text-2xl">Wed Aug 07 2024 8:20:07 PM</span>
+    <div class="timeDate  flex justify-center my-3">
+        <span class="yourDate block lg:text-2xl">Wed Aug 07 2024 8:20:07 PM</span>
+        <!-- <span class="locationDate block lg:text-2xl">Wed Aug 07 2024 8:20:07 PM</span> -->
         <!-- <span class="time"></span> -->
     </div>
 
@@ -64,28 +66,32 @@
     <div class="forecast-container flex flex-wrap gap-x-2 justify-center mt-10 ">
     </div>
 
-    
+
     <!-- 
         <div class="flex justify-center mx-12 mt-6 absolute ">
             <input type="text" class="inputNewLocation text-black p-2  bottom-12" placeholder="Enter new location">
             <button class="submitButton ml-2 px-4 py-2 bg-blue-500 text-white rounded  bottom-12">Update Weather</button>
         </div> -->
-        
-        <div id="locationModal" class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-            <div class="bg-[#475B61] text-white rounded-lg p-8 shadow-2xl border border-gray-300">
-                <h2 class="text-2xl mb-4 font-bold">Change Location</h2>
-                <input type="text" class="inputNewLocation text-black p-2 mb-4 w-full rounded" placeholder="Enter new location">
-                <div class="flex justify-end">
-                    <button class="closeModalButton bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mr-2">Cancel</button>
-                    <button class="submitButton bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update Weather</button>
-                </div>
+
+    <div id="locationModal"
+        class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-[#475B61] text-white rounded-lg p-8 shadow-2xl border border-gray-300">
+            <h2 class="text-2xl mb-4 font-bold">Change Location</h2>
+            <input type="text" class="inputNewLocation text-black p-2 mb-4 w-full rounded"
+                placeholder="Enter new location">
+            <div class="flex justify-end">
+                <button
+                    class="closeModalButton bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mr-2">Cancel</button>
+                <button class="submitButton bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update
+                    Weather</button>
             </div>
         </div>
-        
-        <!-- <div class="footer flex text-xs bottom-6 left-6  justify-between    lg:text-sm font-bold"> -->
-        <span class="left-6 font-bold absolute bottom-6 text-[14px]">**To change the location click on the
-            change icon at the top right corner.</span>
-        <!-- <span class="id right-16 absolute bottom-6">@ akash_raushan_</span>
+    </div>
+
+    <!-- <div class="footer flex text-xs bottom-6 left-6  justify-between    lg:text-sm font-bold"> -->
+    <span class="left-6 font-bold absolute bottom-6 text-[14px] cursor-text">**To change the location click on the
+        change icon at the top right corner.</span>
+    <!-- <span class="id right-16 absolute bottom-6">@ akash_raushan_</span>
         </div> -->
     <!-- </div> -->
 </body>
