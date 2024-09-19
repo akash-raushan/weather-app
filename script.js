@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const key = import.meta.env.VITE_APIKEY;
 
     // OpenCage API key (you need to sign up for an API key at https://opencagedata.com/)
-    const apiKey = '25a60192da7245f4a249e39dbb358a03';
+    const apiKey = import.meta.env.VITE_OPENCAGEAPI;
 
     const getWeather = async (location) => {
         const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${key}&contentType=json`;
