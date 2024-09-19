@@ -12,15 +12,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     var modal = document.getElementById('locationModal');
     var changeLocationButton = document.getElementById('changeLocation');
     var closeModalButton = document.getElementsByClassName('closeModalButton')[0];
+    const locationButton = document.getElementById("locationButton");
 
     const key = import.meta.env.VITE_APIKEY;
-    const defaultLocation = 'delhi';
 
-    const ftoc = (tempInF) => Math.floor((5 * (tempInF - 32)) / 9);
-    const getLocalTime = (timezone) => {
-        const options = { timeZone: timezone, hour12: true, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        return new Intl.DateTimeFormat([], options).format(new Date());
-    };
+    // OpenCage API key (you need to sign up for an API key at https://opencagedata.com/)
+    const apiKey = '25a60192da7245f4a249e39dbb358a03';
 
     const getWeather = async (location) => {
         const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${key}&contentType=json`;
@@ -28,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             const response = await fetch(url, { method: "GET" });
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
 
             // setInterval(() => {
             //     let localTime = getLocalTime(json.timezone);
@@ -76,6 +73,46 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Error fetching weather data:", error);
         }
     };
+
+    const getPlaceName = async (latitude, longitude) => {
+        try {
+            const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`);
+            const data = await response.json();
+            return data.results[0].formatted;
+        } catch (error) {
+            console.error("Error fetching place name: ", error);
+            return 'delhi'; // Fallback to a default location
+        }
+    };
+
+
+    // Location button functionality
+    locationButton.addEventListener('click', () => {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+            const place = await getPlaceName(latitude, longitude);
+            getWeather(place);
+        }, (error) => {
+            if (error.code === error.PERMISSION_DENIED) {
+                console.log("Permission Denied");
+                getWeather('delhi'); // Fallback to a default location if permission denied
+            } else {
+                console.error("Error getting location:", error);
+            }
+        });
+    });
+
+    // console.log(place)
+    const defaultLocation = 'delhi';
+
+    const ftoc = (tempInF) => Math.floor((5 * (tempInF - 32)) / 9);
+    const getLocalTime = (timezone) => {
+        const options = { timeZone: timezone, hour12: true, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        return new Intl.DateTimeFormat([], options).format(new Date());
+    };
+
+    
 
     // Initial call to fetch weather data
     getWeather(defaultLocation);
